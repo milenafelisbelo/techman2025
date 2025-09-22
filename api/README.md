@@ -15,5 +15,5 @@
 
 ###  Clone o repositório e acesse a pasta da API
 ```bash
-git clone https://github.com/milenafelisbelo/techman2025.git
+git clone https://github.com/Milenafelisbelo/techman2025.git
 cd techman2025/api
