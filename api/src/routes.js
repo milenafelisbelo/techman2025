@@ -9,8 +9,8 @@ router.get('/comentarios/equipamento/:equipId', async (req, res) => {
   const { equipId } = req.params;
   try {
     const comentarios = await prisma.comentario.findMany({
-      where: { equipamentoId: Number(equipId) },
-      orderBy: { dataTs: 'desc' } // ordena por data, se existir
+      where: { equipamento: Number(equipId) },
+      orderBy: { data: 'desc' } 
     });
     res.json(comentarios);
   } catch (err) {

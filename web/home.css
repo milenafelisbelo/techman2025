@@ -320,3 +320,111 @@ header nav a:hover {
   border: none;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    padding: 10px 8px;
+    gap: 10px;
+  }
+
+  header img {
+    max-width: 140px;
+  }
+
+  header nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  header nav a {
+    font-size: 16px;
+    padding: 6px 0;
+  }
+
+  #equipamentos-list,
+  #lista-equipamento {
+    max-width: 100%;
+    margin: 16px auto;
+    padding: 0 6px;
+  }
+
+  .equipamento-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 8px;
+    font-size: 15px;
+  }
+
+  .equipamento-img {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .equipamento-info {
+    font-size: 15px;
+    width: 100%;
+  }
+
+  .equipamento-titulo {
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+
+  .equipamento-actions {
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  #modal {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 12px 6px;
+    font-size: 15px;
+  }
+
+  #modal img {
+    max-width: 100%;
+    max-height: 120px;
+  }
+
+  #modal-novo-equip .modal-content {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 12px 8px;
+  }
+
+  #modal-novo-equip h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  #modal-novo-equip input,
+  #modal-novo-equip textarea {
+    font-size: 1em;
+    padding: 7px 8px;
+    margin-bottom: 10px;
+  }
+
+  #modal-novo-equip button {
+    padding: 8px 10px;
+    font-size: 1em;
+  }
+
+  #form-comentario label,
+  #form-comentario textarea,
+  #form-comentario input {
+    font-size: 15px;
+  }
+
+  .comentario-item {
+    font-size: 15px;
+    padding: 6px 0;
+  }
+}

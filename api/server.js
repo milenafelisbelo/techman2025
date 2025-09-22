@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Rotas da API
-app.use('/api', routes);
+app.use('/', routes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

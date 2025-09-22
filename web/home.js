@@ -26,7 +26,7 @@ formNovo.addEventListener('submit', async (e) => {
   const nome = document.getElementById('novo-nome').value.trim();
   const imagem = document.getElementById('novo-imagem').value.trim();
   const descricao = document.getElementById('novo-descricao').value.trim();
-  const ativo = document.getElementById('novo-ativo').checked ? 1 : 0;
+  const ativo = document.getElementById('novo-ativo').checked; // <-- booleano
 
   if (!nome || !imagem || !descricao) {
     alert('Preencha todos os campos.');
@@ -35,8 +35,8 @@ formNovo.addEventListener('submit', async (e) => {
   }
 
   try {
-    const bodyNovo = { equipamento: nome, imagem, descricao, ativo, data: new Date().toISOString() };
-    const resp = await fetch('http://localhost:3000/equipamento', {
+    const bodyNovo = { equipamento: nome, imagem, descricao, ativo }; // <-- sem data
+    const resp = await fetch('http://localhost:3000/equipamentos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(bodyNovo)
@@ -57,7 +57,7 @@ formNovo.addEventListener('submit', async (e) => {
 
 async function carregarEquipamentos() {
   try {
-    const r = await fetch('http://localhost:3000/equipamento', { headers: { 'Cache-Control': 'no-cache' } });
+    const r = await fetch('http://localhost:3000/equipamentos', { headers: { 'Cache-Control': 'no-cache' } }); // <-- plural
     if (!r.ok) throw new Error('Erro ao carregar equipamentos');
     const data = await r.json();
     equipamentos = data;
@@ -68,7 +68,7 @@ async function carregarEquipamentos() {
         <div class="equipamento-info">
           <h2 class="equipamento-titulo"><em>${eq.equipamento}</em></h2>
           <p class="equipamento-desc">${eq.descricao}</p>
-          <p><strong>Status:</strong> ${eq.ativo ? 'Ativo' : 'Inativo'}</p> <!-- opcional exibir ativo/inativo -->
+          <p><strong>Status:</strong> ${eq.ativo ? 'Ativo' : 'Inativo'}</p>
           <div class="equipamento-actions">
             <button class="comentario-btn" data-id="${eq.id}" title="Comentários">
               <img src="assets/comentario.png" alt="Comentários" />
@@ -88,7 +88,7 @@ async function carregarEquipamentos() {
 }
 
 async function carregarComentarios(equipamentoId) {
-  const url = `http://localhost:3000/comentario/equipamento/${encodeURIComponent(equipamentoId)}`;
+  const url = `http://localhost:3000/comentarios/equipamento/${encodeURIComponent(equipamentoId)}`; // <-- plural
   const resp = await fetch(url, { headers: { 'Cache-Control': 'no-cache' } });
   if (!resp.ok) throw new Error('Erro ao carregar comentários');
   return resp.json();
@@ -143,8 +143,7 @@ lista.addEventListener('click', async (e) => {
       }
 
       try {
-        const bodyExato = { comentario, equipamento: equipamentoNum, perfil: perfilNum, data: new Date().toISOString() };
-        const urlPost = "http://localhost:3000/comentario";
+        const bodyNovo = { equipamento: nome, imagem, descricao, ativo, data: new Date().toISOString() }; const urlPost = "http://localhost:3000/comentarios"; // <-- plural
         const respPost = await fetch(urlPost, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -175,13 +174,13 @@ lista.addEventListener('click', async (e) => {
         <h4>Comentários</h4>
         <ul class="lista-comentarios">
           ${listaComentarios.map(c => {
-            const dataFmt = c.data ? new Date(c.data).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—';
-            return `<li class="comentario-item">
+        const dataFmt = c.data ? new Date(c.data).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—';
+        return `<li class="comentario-item">
               <p><strong>Perfil:</strong> ${c.perfil ?? 'N/A'}</p>
               <p><strong>Data:</strong> ${dataFmt}</p>
               <p>${c.comentario}</p>
             </li>`;
-          }).join('')}
+      }).join('')}
         </ul>
       `;
     }
@@ -193,7 +192,7 @@ lista.addEventListener('click', async (e) => {
     if (!confirm('Tem certeza que deseja excluir este equipamento?')) return;
 
     try {
-      const respDel = await fetch(`http://localhost:3000/equipamento/${equipamentoId}`, { method: "DELETE" });
+      const respDel = await fetch(`http://localhost:3000/equipamentos/${equipamentoId}`, { method: "DELETE" }); // <-- plural
       if (!respDel.ok) throw new Error('Erro ao excluir equipamento');
       await carregarEquipamentos();
     } catch (err) {
