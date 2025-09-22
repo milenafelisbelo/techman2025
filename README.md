@@ -2,7 +2,7 @@
 
 ##  Aula 06 – Avaliação Prática  
 
-![Logotipo](./docs/logo.png)  
+![Logotipo](./assets/techman.png)  
 
 ---
 
