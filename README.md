@@ -2,7 +2,7 @@
 
 ##  Aula 06 – Avaliação Prática  
 
-![Logotipo](./assets/techman.png)  
+![Logotipo](web/assets/techman.png)  
 
 ---
 
@@ -22,10 +22,10 @@ O sistema deve possibilitar:
 
 ##  Diagramas  
 
-### 🔹 1. Diagrama Entidade-Relacionamento (DER)  
-![DER](./docs/merder.png)  
+### 1. Diagrama de Atividades – Inclusão de Equipamento  
+(./docs/merder.png)  
 
-### 🔹 2. Diagrama de Atividades – Inclusão de Equipamento  
-![Diagrama de Atividades](./docs/uml.jpeg)  
+### 2. Diagrama Entidade-Relacionamento (DER)  
+(./docs/uml.jpeg)  
 
 ---
