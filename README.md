@@ -23,9 +23,9 @@ O sistema deve possibilitar:
 ##  Diagramas  
 
 ### 🔹 1. Diagrama Entidade-Relacionamento (DER)  
-![DER](./docs/der.png)  
+![DER](./docs/merder.png)  
 
 ### 🔹 2. Diagrama de Atividades – Inclusão de Equipamento  
-![Diagrama de Atividades](./docs/atividade_inclusao_equipamento.png)  
+![Diagrama de Atividades](./docs/uml.jpeg)  
 
 ---
